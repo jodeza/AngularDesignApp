@@ -1,0 +1,129 @@
+<div class="col-lg-10" style="padding:0px;">
+	<div class="col-lg-12" style="background-color:white; margin-bottom:15px;box-shadow: 0px 0px 2px black">
+		<h3 class="text-info"> Quotation / Quotation Processing</h3>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">General Info</a></li>
+			<li><a href="#">Coverage Details</a></li>
+			<li><a href="#">Quote Option</a></li>
+			<li><a href="#">Attachments</a></li>
+			<li><a href="#">Print</a></li>
+			<li><a href="#">Exit</a></li>
+		</ul>
+	</div>
+	<div style="background-color: #f3f3f3; padding: 15px;" >
+		<div align="right">
+			<button class="btn btn-info" style="margin-left: 15px">Back</button>
+			<button class="btn btn-info" style="margin-left: 15px">Save</button>
+			<button class="btn btn-info" style="margin-left: 15px">Cancel</button>
+		</div>
+		<div style="padding: 10px">
+			<button class="btn btn-info" style="margin-left: 15px">Add</button>
+			<button class="btn btn-info" style="margin-left: 15px">Delete</button>
+			<span style="float:right"><span class="glyphicon glyphicon-search"></span><label>Search:</label>&nbsp;
+			<mat-form-field>
+	     		<input matInput (keyup)="applyFilter($event.target.value)" class="form-control" style="background-color: white; box-shadow: 0px 0px 2px black" >
+	    	</mat-form-field>
+			</span>
+		</div>
+
+		<mat-table #table [dataSource]="dataSource">
+
+			<ng-container matColumnDef="check">
+		      <mat-header-cell *matHeaderCellDef> <input type="checkbox" id="checkAll"> </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> <input type="checkbox" id="checkItem"> </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="coverCode">
+		      <mat-header-cell *matHeaderCellDef> Cover Code </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> {{element.coverCode}} </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="section">
+		      <mat-header-cell *matHeaderCellDef> Section</mat-header-cell>
+		      <mat-cell *matCellDef="let element"> {{element.section}} </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="bulletNo">
+		      <mat-header-cell *matHeaderCellDef> Bullet No </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> {{element.bulletNo}} </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="sum">
+		      <mat-header-cell *matHeaderCellDef> Sum Insured </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> {{element.sum}} </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="sort">
+		      <mat-header-cell *matHeaderCellDef> Sort Se </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> {{element.sort}} </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="add">
+		      <mat-header-cell *matHeaderCellDef> Add Sl </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> <input type="checkbox">  </mat-cell>
+		    </ng-container>
+
+		    <ng-container matColumnDef="actions">
+		      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+		      <mat-cell *matCellDef="let element"> 
+		      	<img src="../../assets/Img_Placeholder.png" alt="img here" height="25px" width="25px" style="margin-right: 10px">
+		      	<img src="../../assets/Img_Placeholder.png" alt="img here" height="25px" width="25px" style="margin-right: 10px">
+		      </mat-cell>
+		    </ng-container>
+
+		    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+		<mat-paginator [length]="5" [pageSize]="3" [pageSizeOptions]="[5, 10, 25]">
+  		</mat-paginator>
+
+		<br><br>
+
+		<table class="center">
+			<tr>
+				<td class="datapad">
+					<label>Total Sum Insured Section I</label>
+				</td>
+				<td class="datapad">
+					<input type="text" class="form-control" style="width: 100%" align="right">
+				</td>
+				<td class="datapad">
+					<label>Section II</label>
+				</td>
+				<td class="datapad">
+					<input type="text" class="form-control" style="width: 100%" align="right">
+				</td>
+				<td class="datapad">
+					<label>Section III</label>
+				</td>
+				<td class="datapad">
+					<input type="text" class="form-control" style="width: 100%" align="right">
+				</td>
+			</tr>
+			<tr>
+				<td class="datapad">
+					<label>Currency</label>
+				</td>
+				<td class="datapad">
+					<input type="text" class="form-control" style="width: 100%" align="right">
+				</td>
+			</tr>
+			<tr>
+				<td class="datapad">
+					<label>Deductibles</label>
+				</td>
+				<td class="datapad" colspan="3">
+					<textarea name="TxtDeductibles" rows="2" class="form-control"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="datapad">
+					<label>Remarks</label>
+				</td>
+				<td class="datapad" colspan="3">				
+					<textarea name="TextRemarks" rows="2" class="form-control"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+<div>
